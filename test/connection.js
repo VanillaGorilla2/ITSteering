@@ -9,7 +9,7 @@ mongoose.Promise = global.Promise;
 before(function(done) {
     // connect to mongodb
 
-    mongoose.connect('mongodb://0.0.0.0/testaroo');
+    mongoose.connect('mongodb://0.0.0.0/myDatabase');
 
     mongoose.connection.once('open', function() {
         console.log('Connection has been made, now make fireworks...');
