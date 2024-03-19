@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "test": "mocha"
+  },
   "dependencies": {
     "express": "^4.18.3",
     "mocha": "^10.3.0",
