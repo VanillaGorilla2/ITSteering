@@ -27,16 +27,6 @@ const LoginPage = ({ onLoginSuccess }) => {
       }
     })
 
-    /*
-    if (username === 'admin' && password === 'admin123') {
-      onLoginSuccess(username);
-    } else if (username === 'user' && password === 'user123') {
-      onLoginSuccess(username);
-    } else {
-      setError('Please enter a valid username and password');
-    }
-
-    */
   };
 
   return (

@@ -2,6 +2,7 @@
     position: relative;
     float: right;
     margin: 15px;
+    margin-bottom: 50px;
 }
 
 .odjava_btn {
@@ -13,10 +14,12 @@
     
 }
 
+button {
+    width: 60px;
+}
 .delete_btn {
     background: red;
     color: white;
-    width: 50px;
 
 }
 
@@ -24,5 +27,29 @@
     background: orange;
     color: white;
     margin-left: 5px;
-    width: 50px;
+}
+
+.save_btn {
+    background: green;
+    color: white;
+    margin-left: 5px;
+}
+
+#container {
+    padding-top: 15%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+thead {
+    font-size: large;
+}
+
+tbody {
+    font-size: medium;
+}
+
+
+* {
+    background-color: lightgray;
 }

@@ -4,8 +4,8 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ITSteering = ({ username }) => {
-  const [projects, setProjects] = useState([])
-
+  const [projects, setProjects]                 = useState([])
+  const [isPrijavaClicked, setIsPrijavaClicked] = useState(false);
 
   useEffect(() => {
 
@@ -14,76 +14,96 @@ const ITSteering = ({ username }) => {
     .catch(err => console.log(err));
   }, [])
 
+  const handlePrijavaClick = () => {
+    setIsPrijavaClicked(true);
+  };
+
   const handleRedirectToLogin = () => {
-    window.location.href = '/login'; // Redirect to the login page
+    window.location.href = '/login';  // Redirect to the login page
   };
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'V izvedbi':
+      case 'V izvedbi': 
         return 'orange';
-      case 'Zaključeno':
+      case 'Zaključeno': 
         return 'green';
-      case 'V presoji':
+      case 'V presoji': 
         return 'yellow';
-      case 'Na čakanju':
+      case 'Na čakanju': 
         return 'red';
-      default:
+      default: 
         return 'black';
     }
   };
 
   return (
-    <div className='content'>
-        <div className='header'>
+    <div className = 'content'>
+    <div className = 'header'>
             Prijavljeni ste kot {username}
-            <button className='odjava_btn' onClick={handleRedirectToLogin}>Odjava</button>
-        </div>
-        <div className='prijava'>
-          <button className='prijava_btn'>Prijava projekta</button> 
+            <button className = 'odjava_btn' onClick = {handleRedirectToLogin}>Odjava</button>
         </div>
 
-      <div className="w-100 vh-100 d-flex justify-content-center align-items-center">
+        <div className = 'prijava'>
+        {!isPrijavaClicked ? (
+            <>
+                <button className = 'prijava_btn' onClick = {handlePrijavaClick}>Prijava projekta</button>
+                <div    className = "w-100 vh-100 d-flex justify-content-center align-items-center">
 
-        <div className="w-50">
+                <div className = "w-50">
 
-        <table className='table'>
-          <thead>
-            <tr>
-              <th>
-                Naslov
-              </th>
-              <th scope='col'>
-                Opis
-              </th>
-              <th scope='col'>
-                Poslovni učinek
-              </th>
-              <th scope='col'>
-                Rok implementacije
-              </th>
-              <th scope='col'>
-                Status
-              </th>
-              <th scope='col'>
+                <table className = 'table'>
+                <thead>
+                    <tr>
+                    <th>
+                        Naslov
+                    </th>
+                    <th scope = 'col'>
+                        Opis
+                    </th>
+                    <th scope = 'col'>
+                        Poslovni učinek
+                    </th>
+                    <th scope = 'col'>
+                        Rok implementacije
+                    </th>
+                    <th scope = 'col'>
+                        Status
+                    </th>
+                    <th scope = 'col'>
 
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {projects.map(project => {
-              return <tr>
-                <td>{project.naslov}</td>
-                <td>{project.opis}</td>
-                <td>{project.poslovni_ucinek}</td>
-                <td>{project.rok_implementacije}</td>
-                <td style={{color: getStatusColor(project.status)}}>{project.status}</td>
-              </tr>
-            })}
-          </tbody>
-        </table>
-        </div>
+                    </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {projects.map(project => {
+                    return <tr>
+                        <td>{project.naslov}</td>
+                        <td>{project.opis}</td>
+                        <td>{project.poslovni_ucinek}</td>
+                        <td>{project.rok_implementacije}</td>
+                        <td style = {{color: getStatusColor(project.status)}}>{project.status}</td>
+                    </tr>
+                    })}
+                </tbody>
+                </table>
+                </div>
+                </div>
+            </>
+
+        ) : (
+          <div> {/* Render your another page content here */}
+            <>
+                <div className='newProject_container'>
+                    
+                </div>
+            </>
+            {/* Add content for the another page */}
+          </div>
+        )}
       </div>
+
+      
         
     </div>
   );
