@@ -4,10 +4,11 @@ import ITSteering from './Components/ITSteering.jsx';
 import ITSteeringUser from './Components/ITSteeringUser.jsx';
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
-
+  const [userPriviledge, setUserPriviledge] = useState('');
+  const [username, setUsername] = useState('')
   const handleLoginSuccess = (user) => {
-    setUsername(user);
+    setUserPriviledge(user.privilege);
+    setUsername(user.username);
     setIsLoggedIn(true);
   };
 
@@ -17,7 +18,7 @@ const App = () => {
 
       {!isLoggedIn ? (
         <LoginPage onLoginSuccess={handleLoginSuccess} />
-      ) : username === 'admin' ? (
+      ) : userPriviledge === 'administrator' ? (
         <ITSteering username={username} />
       ) : (
         <ITSteeringUser username={username} />

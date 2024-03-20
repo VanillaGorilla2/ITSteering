@@ -20,7 +20,7 @@ const LoginPage = ({ onLoginSuccess }) => {
     // For simplicity, assume successful login if username and password are not empty
     users.forEach(user => {
       if(username === user.username && password === user.password) {
-        onLoginSuccess(username);
+        onLoginSuccess(user);
 
       } else {
         setError('Please enter a valid username and password');
