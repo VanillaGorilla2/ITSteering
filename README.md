@@ -7,10 +7,14 @@ Exercise for job application. Project I was assigned to determine my knowledge l
 - has 2 different priviledges: admin and user,
 - admin priviledge has 3 functionalities:
 
-  - allows to delete chosen project from the list and the database,
-  - allows to edit chosen project at will. -
+  1. allows to delete chosen project from the list and the database,
+  2. allows to edit chosen project at will,
+  3. can scroll through all the projects.
 
-- user priviledge has
+- user priviledge has 2 functionalities:
+
+  1. can create a new project,
+  2. can scroll through all the projects.
 
 ## Getting started
 
