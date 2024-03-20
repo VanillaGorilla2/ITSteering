@@ -4,15 +4,13 @@ Exercise for job application. Project I was assigned to determine my knowledge l
 
 ## Features
 
-    - has 2 different priviledges: admin and user,
-    - admin priviledge has 3 functionalities:
-        -
-        allows to delete chosen project from the list and the database,
-        -
-        -
-        allows to edit chosen project at will.
-        -
-    - user priviledge has
+- has 2 different priviledges: admin and user,
+- admin priviledge has 3 functionalities:
+
+  - allows to delete chosen project from the list and the database,
+  - allows to edit chosen project at will. -
+
+- user priviledge has
 
 ## Getting started
 
