@@ -2,6 +2,18 @@
 
 Exercise for job application. Project I was assigned to determine my knowledge level in programming languages React, Express and MongoDB.
 
+## Features
+
+    - has 2 different priviledges: admin and user,
+    - admin priviledge has 3 functionalities:
+        -
+        allows to delete chosen project from the list and the database,
+        -
+        -
+        allows to edit chosen project at will.
+        -
+    - user priviledge has
+
 ## Getting started
 
     1. Clone the project, then navigate to .\ITSteering (cd .\ITSteering)
