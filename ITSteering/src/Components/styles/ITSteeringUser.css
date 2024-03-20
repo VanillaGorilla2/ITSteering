@@ -1,0 +1,22 @@
+.header {
+    position: relative;
+    float: right;
+    margin: 15px;
+}
+.prijava_btn {
+    margin-top: 50px;
+    position: relative;
+    float: right;
+    background: black;
+    color: white;
+    position: relative;
+    float: right;
+}
+.odjava_btn {
+    margin-left: 15px;
+    background: red;
+    color: white;
+    position: relative;
+    float: right;
+    
+}

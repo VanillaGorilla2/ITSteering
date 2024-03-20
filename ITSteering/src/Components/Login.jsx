@@ -1,18 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 
 const LoginPage = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    axios.get('http://localhost:3001/getUsers')
+    .then(users => setUsers(users.data))
+    .catch(err => console.log(err));
+
+  }, [])
+
+
   const handleLogin = () => {
     // Your login logic goes here
     // For simplicity, assume successful login if username and password are not empty
+    users.forEach(user => {
+      if(username === user.username && password === user.password) {
+        onLoginSuccess(username);
+
+      } else {
+        setError('Please enter a valid username and password');
+      }
+    })
+
+    /*
     if (username === 'admin' && password === 'admin123') {
+      onLoginSuccess(username);
+    } else if (username === 'user' && password === 'user123') {
       onLoginSuccess(username);
     } else {
       setError('Please enter a valid username and password');
     }
+
+    */
   };
 
   return (

@@ -1,9 +1,28 @@
 .header {
     position: relative;
     float: right;
+    margin: 15px;
 }
 
-.odjava {
-    padding: 10px;
-    margin: 10px;
+.odjava_btn {
+    margin-left: 15px;
+    background: red;
+    color: white;
+    position: relative;
+    float: right;
+    
+}
+
+.delete_btn {
+    background: red;
+    color: white;
+    width: 50px;
+
+}
+
+.edit_btn {
+    background: orange;
+    color: white;
+    margin-left: 5px;
+    width: 50px;
 }
