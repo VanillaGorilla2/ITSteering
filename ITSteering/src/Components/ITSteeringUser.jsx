@@ -6,6 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const ITSteering = ({ username }) => {
   const [projects, setProjects]                 = useState([])
   const [isPrijavaClicked, setIsPrijavaClicked] = useState(false);
+  const [newProject, setNewProject]             = useState({
+    naslov            : '',
+    opis              : '',
+    poslovni_ucinek   : '',
+    rok_implementacije: '',
+    status: 'V presoji'
+  });
 
   useEffect(() => {
 
@@ -22,6 +29,23 @@ const ITSteering = ({ username }) => {
     window.location.href = '/login';  // Redirect to the login page
   };
 
+  const handleSubmit = () => {
+    if(newProject.naslov === '' || newProject.opis === '' || newProject.poslovni_ucinek === '' || newProject.rok_implementacije === '') {
+        alert('Please fill all fields');
+    } else {
+        axios.post('http://localhost:3001/saveProject', newProject)
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+        setIsPrijavaClicked(false);
+    }
+
+  };
+
+
   const getStatusColor = (status) => {
     switch (status) {
       case 'V izvedbi': 
@@ -37,6 +61,15 @@ const ITSteering = ({ username }) => {
     }
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewProject(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+
   return (
     <div className = 'content'>
     <div className = 'header'>
@@ -47,8 +80,10 @@ const ITSteering = ({ username }) => {
         <div className = 'prijava'>
         {!isPrijavaClicked ? (
             <>
+                
+                <div    className = "w-100 vh-100 d-flex justify-content-center align-items-center" id='container'>
                 <button className = 'prijava_btn' onClick = {handlePrijavaClick}>Prijava projekta</button>
-                <div    className = "w-100 vh-100 d-flex justify-content-center align-items-center">
+                <h1>IT Steering</h1>
 
                 <div className = "w-50">
 
@@ -95,7 +130,16 @@ const ITSteering = ({ username }) => {
           <div> {/* Render your another page content here */}
             <>
                 <div className='newProject_container'>
-                    
+                    <h1>Prijava projekta na IT Steering</h1>
+                    <div className='input_fields'>
+                        <input type='text' className='input_tag' placeholder='Naslov projekta' name='naslov' value={newProject.naslov} onChange={handleInputChange}></input>
+                        <input type='text' placeholder='Opis projekta' className='opis_input' name='opis' value={newProject.opis} onChange={handleInputChange}></input>
+                        <input type='text' className='input_tag' placeholder='Poslovni učinek' name='poslovni_ucinek' value={newProject.poslovni_ucinek} onChange={handleInputChange}></input>
+                        <label>Rok implementacije</label>
+                        <input type='date' className='date_input' name='rok_implementacije' value={newProject.rok_implementacije} onChange={handleInputChange}></input>
+                    </div>
+
+                    <button className='oddaj_btn' onClick={handleSubmit}>Oddaj prijavo</button>
                 </div>
             </>
             {/* Add content for the another page */}

@@ -41,8 +41,19 @@ app.put('/projects/:id', async (req, res) => {
       console.error('Error updating project:', error);
       res.status(500).json({ error: 'An error occurred while updating the project' });
     }
-  });
-  
+});
+
+app.post('/saveProject', async (req, res) => {
+    const newProjectData = req.body;
+
+    try {
+        const newProject = await Project.create(newProjectData);
+        res.status(201).json({ message: 'Project saved successfully', project: newProject });
+    }catch (error) {
+        console.error('Error saving project:', error);
+        res.status(500).json({ error: 'An error occurred while saving the project' });
+    }
+})
 app.listen(3001, () => {
     console.log("server is running")
 })
