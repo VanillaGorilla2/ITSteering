@@ -36,6 +36,7 @@ const ITSteering = ({ username }) => {
         axios.post('http://localhost:3001/saveProject', newProject)
         .then(response => {
           console.log(response.data);
+          setProjects(prevProjects => [...prevProjects, response.data.project]);
         })
         .catch(err => {
           console.error(err);
