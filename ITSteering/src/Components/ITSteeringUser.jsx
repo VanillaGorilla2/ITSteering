@@ -41,6 +41,13 @@ const ITSteering = ({ username }) => {
         .catch(err => {
           console.error(err);
         });
+        setNewProject({
+          naslov: '',
+          opis: '',
+          poslovni_ucinek: '',
+          rok_implementacije: '',
+          status: 'V presoji'
+        });
         setIsPrijavaClicked(false);
     }
 
